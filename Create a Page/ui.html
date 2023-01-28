@@ -1,0 +1,28 @@
+<h2>Component Creator</h2>
+<p>Number of Rectangles: <input id="count" value="5"></p>
+<p>Page Title: <input id="title" value="Title"></p>
+
+<button id="create-rectangles">Create Rectangles</button>
+<button id="create-page">Create Page</button>
+<button id="analise-page">Analise</button>
+<button id="cancel">Cancel</button>
+
+<script>
+
+document.getElementById('create-rectangles').onclick = () => {
+  const textbox = document.getElementById('count');
+  const count = parseInt(textbox.value, 10);
+  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+}
+
+document.getElementById('create-page').onclick = () => {
+  const textbox = document.getElementById('title');
+  const title = parseInt(textbox.value, 'Title');
+  parent.postMessage({ pluginMessage: { type: 'create-page', title } }, '*')
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+</script>

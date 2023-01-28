@@ -1,0 +1,13 @@
+{
+  "name": "Find Components",
+  "version": "1.0.0",
+  "description": "Search for components and create component definitions",
+  "main": "code.js",
+  "scripts": {
+  },
+  "author": "Tim McMaster",
+  "license": "MIT",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.58.0"
+  }
+}
