@@ -1,0 +1,21 @@
+
+<h2>Component Creator</h2>
+
+
+<button id="analise-page">Analise</button>
+<button id="post-data">Post Data</button>
+<button id="cancel">Cancel</button>
+
+<script>
+
+document.getElementById('analise-page').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'analise-page' } }, '*')
+}
+document.getElementById('post-data').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'post-data' } }, '*')
+}
+document.getElementById('cancel').onclick = () => {
+    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+</script>

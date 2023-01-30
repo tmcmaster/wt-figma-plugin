@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "Search for components and create component definitions",
   "main": "code.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Tim McMaster",
   "license": "MIT",
   "devDependencies": {
     "@figma/plugin-typings": "^1.58.0"
+  },
+  "dependencies": {
+    "xhr2": "^0.2.1"
   }
 }
