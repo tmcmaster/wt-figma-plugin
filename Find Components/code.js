@@ -1,10 +1,12 @@
 const MAX_DEPTH = 10;
 const hasUI = true;
 
+// TODO: need to play with variants and look at mapping them to Widgetbook use-cases.
 if (hasUI) {
     figma.showUI(__html__, {visible: true})
     figma.ui.onmessage = msg => {
         if (msg.type === 'analise-page') {
+            console.log(figma.currentPage.selection[0].characters);
             const components = findComponents(figma.currentPage.selection);
             console.log(components);
             figma.closePlugin();
@@ -157,6 +159,17 @@ function createChildrenDefinitions(children, depth = 0) {
         const type = node.type;
         if (type === 'FRAME' || type === 'GROUP') {
             return createContainerDefinition(node, ++depth);
+        } else if (type === 'TEXT') {
+            return {
+                name: node.name,
+                id: node.id,
+                type: node.type,
+                characters: node.characters,
+                x: node.x,
+                y: node.y,
+                width: node.width,
+                height: node.height,
+            };
         } else {
             return {
                 name: node.name,

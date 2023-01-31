@@ -13,16 +13,28 @@ dependencies:
   args: ^2.0.0
   shelf: ^1.1.0
   shelf_router: ^1.0.0
+  flutter_riverpod: ^2.1.3
+  font_awesome_flutter: ^10.3.0
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
+
+  wt_logging:
+    git:
+      url: git@github.com:tmcmaster/wt_logging.git
+  wt_models:
+    git:
+      url: git@github.com:tmcmaster/wt_models.git
+  built_value: ^8.4.3
+  built_collection: ^5.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
+  json_serializable: ^6.5.4
+  built_value_generator: ^8.4.3
 
 flutter:
   uses-material-design: true
-
-#dev_dependencies:
-#  http: ^0.13.0
-#  lints: ^2.0.0
-#  test: ^1.15.0
