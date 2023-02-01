@@ -12,11 +12,11 @@ class ActivityGoal extends StatelessWidget {
         Container(),
         Column(
           children: [
-            const Text(''),
+            const Text('Activity goal'),
             Column(
               children: const [
-                Text(''),
-                Text(''),
+                Text('mins'),
+                Text('25 / 45'),
               ],
             ),
           ],

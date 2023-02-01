@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wt_figma_to_flutter/models/figma_container_definition.dart';
 import 'package:wt_figma_to_flutter/models/figma_item_definition.dart';
 import 'package:wt_figma_to_flutter/models/figma_node_definition.dart';
+import 'package:wt_figma_to_flutter/models/figma_text_definition.dart';
 import 'package:wt_figma_to_flutter/providers/components_provider.dart';
 
 class ComponentListScreen extends ConsumerWidget {
@@ -66,7 +67,7 @@ class $className extends StatelessWidget {
   static String _buildNode(FigmaNodeDefinition node) {
     return FigmaContainerDefinition.isContainer(node)
         ? _buildContainer(node as FigmaContainerDefinition)
-        : _buildItem(node as FigmaItemDefinition);
+        : _buildItem(node);
   }
 
   static String _buildContainer(FigmaContainerDefinition container) {
@@ -80,16 +81,18 @@ class $className extends StatelessWidget {
     ''';
   }
 
-  static String _buildItem(FigmaItemDefinition item) {
-    return item.type == 'TEXT' ? _buildItemText(item) : _buildItemContainer(item);
+  static String _buildItem(FigmaNodeDefinition item) {
+    return item is FigmaTextDefinition
+        ? _buildItemText(item)
+        : _buildItemContainer(item as FigmaItemDefinition);
   }
 
   static String _buildItemContainer(FigmaItemDefinition item) {
     return 'Container()';
   }
 
-  static String _buildItemText(FigmaItemDefinition item) {
-    return "const Text('')";
+  static String _buildItemText(FigmaTextDefinition item) {
+    return "const Text('${item.characters}')";
   }
 }
 

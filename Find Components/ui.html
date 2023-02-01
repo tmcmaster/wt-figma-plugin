@@ -4,6 +4,7 @@
 
 <button id="analise-page">Analise</button>
 <button id="post-data">Post Data</button>
+<button id="export-slice">Export Slice</button>
 <button id="cancel">Cancel</button>
 
 <script>
@@ -13,6 +14,9 @@ document.getElementById('analise-page').onclick = () => {
 }
 document.getElementById('post-data').onclick = () => {
   parent.postMessage({ pluginMessage: { type: 'post-data' } }, '*')
+}
+document.getElementById('export-slice').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'export-slice' } }, '*')
 }
 document.getElementById('cancel').onclick = () => {
     parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')

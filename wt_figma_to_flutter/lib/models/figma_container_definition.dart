@@ -3,6 +3,7 @@ import 'package:wt_figma_to_flutter/models/figma_axis.dart';
 import 'package:wt_figma_to_flutter/models/figma_item_definition.dart';
 import 'package:wt_figma_to_flutter/models/figma_layout.dart';
 import 'package:wt_figma_to_flutter/models/figma_node_definition.dart';
+import 'package:wt_figma_to_flutter/models/figma_text_definition.dart';
 import 'package:wt_models/wt_models.dart';
 
 part 'figma_container_definition.freezed.dart';
@@ -57,7 +58,9 @@ class FigmaContainerDefinition with JsonSupport, FigmaNodeDefinition, _$FigmaCon
     return mapList
         .map((map) => (isContainer(map)
             ? FigmaContainerDefinition.fromJson(map)
-            : FigmaItemDefinition.fromJson(map)) as FigmaNodeDefinition)
+            : FigmaTextDefinition.isText(map)
+                ? FigmaTextDefinition.fromJson(map)
+                : FigmaItemDefinition.fromJson(map)) as FigmaNodeDefinition)
         .toList();
   }
 

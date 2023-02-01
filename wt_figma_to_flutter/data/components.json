@@ -622,9 +622,9 @@
     "id": "10:78",
     "type": "COMPONENT",
     "description": "",
-    "x": 51,
+    "x": 122,
     "y": 41.5,
-    "width": 134,
+    "width": 137,
     "height": 40,
     "componentProperty": {
       "type": "Text Icon Button",
@@ -655,16 +655,23 @@
         "id": "10:74",
         "type": "TEXT",
         "characters": "Button",
+        "style": {
+          "id": "S:3f057dd9e33b59cbcece6b68b9f805a72764d340,",
+          "fontWeight": 700,
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontStyle": "Bold"
+        },
         "x": 20,
         "y": 11.5,
-        "width": 64,
+        "width": 67,
         "height": 17
       },
       {
         "name": "Icon / Favorite border",
         "id": "10:105",
         "type": "INSTANCE",
-        "x": 94,
+        "x": 97,
         "y": 10,
         "width": 20,
         "height": 20
@@ -713,22 +720,22 @@
     "rotation": 0,
     "state": {
       "visible": true,
-      "expanded": false,
+      "expanded": true,
       "locked": false,
       "removed": false
     },
     "attachedConnectors": [],
     "absolute": {
       "boundingBos": {
-        "x": -663,
+        "x": -592,
         "y": -511.5,
-        "width": 134,
+        "width": 137,
         "height": 40
       },
       "renderBounds": {
-        "x": -663,
+        "x": -592,
         "y": -511.5,
-        "width": 134,
+        "width": 137,
         "height": 40
       }
     },
@@ -752,9 +759,9 @@
     "id": "17:81",
     "type": "COMPONENT",
     "description": "",
-    "x": 195,
+    "x": 269,
     "y": 35,
-    "width": 100,
+    "width": 227,
     "height": 53,
     "componentProperty": {
       "type": "Warning Text",
@@ -764,13 +771,20 @@
     "variantProperties": null,
     "children": [
       {
-        "name": "Testing",
+        "name": "Testing Text Styles",
         "id": "17:80",
         "type": "TEXT",
-        "characters": "Testing",
-        "x": 14.5,
+        "characters": "Testing Text Styles",
+        "style": {
+          "id": "S:3f057dd9e33b59cbcece6b68b9f805a72764d340,",
+          "fontWeight": 700,
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontStyle": "Bold"
+        },
+        "x": 18,
         "y": 18,
-        "width": 71,
+        "width": 191,
         "height": 17
       }
     ],
@@ -817,22 +831,22 @@
     "rotation": 0,
     "state": {
       "visible": true,
-      "expanded": false,
+      "expanded": true,
       "locked": false,
       "removed": false
     },
     "attachedConnectors": [],
     "absolute": {
       "boundingBos": {
-        "x": -519,
+        "x": -445,
         "y": -518,
-        "width": 100,
+        "width": 227,
         "height": 53
       },
       "renderBounds": {
-        "x": -519,
+        "x": -445,
         "y": -518,
-        "width": 100,
+        "width": 227,
         "height": 53
       }
     },
@@ -1171,6 +1185,13 @@
                         "id": "22:231",
                         "type": "TEXT",
                         "characters": "50",
+                        "style": {
+                          "id": "",
+                          "fontWeight": 600,
+                          "fontSize": 22,
+                          "fontFamily": "Okta Neue",
+                          "fontStyle": "SemiBold"
+                        },
                         "x": 0,
                         "y": 0,
                         "width": 28,
@@ -1181,6 +1202,13 @@
                         "id": "22:232",
                         "type": "TEXT",
                         "characters": "%",
+                        "style": {
+                          "id": "",
+                          "fontWeight": 400,
+                          "fontSize": 14,
+                          "fontFamily": "Okta Neue",
+                          "fontStyle": "Normal"
+                        },
                         "x": 28,
                         "y": 8,
                         "width": 16,
@@ -1464,6 +1492,13 @@
                     "id": "22:237",
                     "type": "TEXT",
                     "characters": "56",
+                    "style": {
+                      "id": "",
+                      "fontWeight": 600,
+                      "fontSize": 22,
+                      "fontFamily": "Okta Neue",
+                      "fontStyle": "SemiBold"
+                    },
                     "x": 0,
                     "y": 0,
                     "width": 28,
@@ -1474,6 +1509,13 @@
                     "id": "22:238",
                     "type": "TEXT",
                     "characters": "%",
+                    "style": {
+                      "id": "",
+                      "fontWeight": 400,
+                      "fontSize": 14,
+                      "fontFamily": "Okta Neue",
+                      "fontStyle": "Normal"
+                    },
                     "x": 28,
                     "y": 8,
                     "width": 16,
@@ -1939,6 +1981,13 @@
             "id": "22:204",
             "type": "TEXT",
             "characters": "Nutrition goal",
+            "style": {
+              "id": "",
+              "fontWeight": 500,
+              "fontSize": 12,
+              "fontFamily": "Okta Neue",
+              "fontStyle": "Medium"
+            },
             "x": 10.170387268066406,
             "y": 85,
             "width": 85.65922546386719,
@@ -1963,6 +2012,13 @@
                 "id": "22:207",
                 "type": "TEXT",
                 "characters": "750 / 1500",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 16,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 13.304260730743408,
                 "y": 107.44475555419922,
                 "width": 80.43610382080078,
@@ -1973,6 +2029,13 @@
                 "id": "22:206",
                 "type": "TEXT",
                 "characters": "kcal",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 10,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 43.59837770462036,
                 "y": 127.75191116333008,
                 "width": 21.93712043762207,
@@ -2166,6 +2229,13 @@
             "id": "22:211",
             "type": "TEXT",
             "characters": "Activity goal",
+            "style": {
+              "id": "",
+              "fontWeight": 500,
+              "fontSize": 12,
+              "fontFamily": "Okta Neue",
+              "fontStyle": "Medium"
+            },
             "x": 14.871196746826172,
             "y": 85,
             "width": 76.25760650634766,
@@ -2190,6 +2260,13 @@
                 "id": "22:213",
                 "type": "TEXT",
                 "characters": "mins",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 10,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 40.98681831359863,
                 "y": 127.75191116333008,
                 "width": 25.070993423461914,
@@ -2200,6 +2277,13 @@
                 "id": "22:214",
                 "type": "TEXT",
                 "characters": "25 / 45",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 16,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 27.406696319580078,
                 "y": 107.44475555419922,
                 "width": 51.186614990234375,
@@ -2370,6 +2454,13 @@
         "id": "22:167",
         "type": "TEXT",
         "characters": "Goal Streak",
+        "style": {
+          "id": "",
+          "fontWeight": 500,
+          "fontSize": 12,
+          "fontFamily": "Okta Neue",
+          "fontStyle": "Medium"
+        },
         "x": 0,
         "y": 0,
         "width": 355,
@@ -2417,6 +2508,13 @@
                 "id": "22:171",
                 "type": "TEXT",
                 "characters": "Mon",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 12,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 1.5,
                 "y": 36,
                 "width": 29,
@@ -2516,6 +2614,13 @@
                 "id": "22:174",
                 "type": "TEXT",
                 "characters": "Tue",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 12,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 4.5,
                 "y": 36,
                 "width": 23,
@@ -2769,6 +2874,13 @@
                 "id": "22:180",
                 "type": "TEXT",
                 "characters": "Wed",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 12,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 2,
                 "y": 36,
                 "width": 28,
@@ -3070,6 +3182,13 @@
                 "id": "22:187",
                 "type": "TEXT",
                 "characters": "Thu",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 12,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 4,
                 "y": 36,
                 "width": 24,
@@ -3169,6 +3288,13 @@
                 "id": "22:190",
                 "type": "TEXT",
                 "characters": "Fri",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 12,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 6.5,
                 "y": 36,
                 "width": 19,
@@ -3268,6 +3394,13 @@
                 "id": "22:193",
                 "type": "TEXT",
                 "characters": "Sat",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 12,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 5,
                 "y": 36,
                 "width": 22,
@@ -3367,6 +3500,13 @@
                 "id": "22:196",
                 "type": "TEXT",
                 "characters": "Sun",
+                "style": {
+                  "id": "",
+                  "fontWeight": 500,
+                  "fontSize": 12,
+                  "fontFamily": "Okta Neue",
+                  "fontStyle": "Medium"
+                },
                 "x": 3.5,
                 "y": 36,
                 "width": 25,

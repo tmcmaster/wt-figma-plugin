@@ -4,36 +4,81 @@ const hasUI = true;
 // TODO: need to play with variants and look at mapping them to Widgetbook use-cases.
 if (hasUI) {
     figma.showUI(__html__, {visible: true})
-    figma.ui.onmessage = msg => {
-        if (msg.type === 'analise-page') {
-            console.log(figma.currentPage.selection[0].characters);
-            const components = findComponents(figma.currentPage.selection);
-            console.log(components);
-            figma.closePlugin();
-        } else if (msg.type === 'post-data') {
-            const url = "http://localhost:8080/put";
-            const components = findComponents(figma.currentPage.selection);
-            fetch(url, {
-                method: 'PUT',
-                body: JSON.stringify(components)
-            })
-                .then(response => {
-                    console.log('Response', response);
-                    figma.closePlugin();
-                }) // .text(), etc.
-                .catch((e) => {
-                    console.error('Error occurred while posting data', e);
-                    figma.closePlugin();
-                });
-
-        } else {
-            figma.closePlugin();
-        }
-    }
+    figma.ui.onmessage = processMessage
 } else {
     const components = findComponents(figma.currentPage.selection);
     console.log(components);
     figma.closePlugin();
+}
+
+async function processMessage(msg) {
+    if (msg.type === 'analise-page') {
+        console.log(figma.currentPage.selection[0].characters);
+        const components = findComponents(figma.currentPage.selection);
+        console.log(components);
+        figma.closePlugin();
+    } else if (msg.type === 'post-data') {
+        const url = "http://localhost:8080/put";
+        const components = findComponents(figma.currentPage.selection);
+        fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(components)
+        })
+            .then(response => {
+                console.log('Response', response);
+                figma.closePlugin();
+            }) // .text(), etc.
+            .catch((e) => {
+                console.error('Error occurred while posting data', e);
+                figma.closePlugin();
+            });
+
+    } else if (msg.type === 'export-slice') {
+        const component = figma.currentPage.selection[0];
+        const frame = await createComponentPreview(component);
+        // figma.currentPage.children[1].appendChild(frame);
+        figma.closePlugin();
+    } else {
+        figma.closePlugin();
+    }
+}
+
+async function createComponentPreview(component) {
+    try {
+        console.log('AAAA');
+        const x = component.x;
+        const y = component.y;
+        const width = component.width;
+        const height = component.height;
+
+        console.log('BBBB');
+        const bytes = await component.exportAsync({
+            format: 'SVG'
+        });
+        console.log('CCCC');
+        const imageAsString = String.fromCharCode.apply(null, bytes);
+
+
+        console.log(imageAsString);
+
+        // const image = figma.createImage(bytes);
+        // console.log(image.hash);
+        const frame = figma.createFrame();
+        frame.name = 'Preview';
+        frame.resize(width, height)
+        frame.x = 100;
+        frame.y = 200;
+        // frame.fills = [{
+        //     imageHash: image.hash,
+        //     scaleMode: "FILL",
+        //     scalingFactor: 1,
+        //     type: "IMAGE",
+        // }]
+        return frame;
+    } catch(error) {
+        console.error(error);
+        throw error;
+    }
 }
 
 function findComponents(nodes, depth = 0) {
@@ -160,11 +205,21 @@ function createChildrenDefinitions(children, depth = 0) {
         if (type === 'FRAME' || type === 'GROUP') {
             return createContainerDefinition(node, ++depth);
         } else if (type === 'TEXT') {
+            if (node.textStyleId) {
+                console.log('Text Style', figma.getStyleById(node.textStyleId));
+            }
             return {
                 name: node.name,
                 id: node.id,
                 type: node.type,
                 characters: node.characters,
+                style: {
+                    id: node.textStyleId,
+                    fontWeight: node.fontWeight,
+                    fontSize: node.fontSize,
+                    fontFamily: node.fontName.family,
+                    fontStyle: node.fontName.style,
+                },
                 x: node.x,
                 y: node.y,
                 width: node.width,
