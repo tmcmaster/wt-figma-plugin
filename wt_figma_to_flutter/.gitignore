@@ -47,3 +47,4 @@ hold
 junk
 *.g.dart
 *.freezed.dart
+lib/generated/previews

@@ -7,6 +7,7 @@ import 'package:wt_figma_to_flutter/models/figma_item_definition.dart';
 import 'package:wt_figma_to_flutter/models/figma_node_definition.dart';
 import 'package:wt_figma_to_flutter/models/figma_text_definition.dart';
 import 'package:wt_figma_to_flutter/providers/components_provider.dart';
+import 'package:wt_figma_to_flutter/utils/name_builder.dart';
 
 class ComponentListScreen extends ConsumerWidget {
   const ComponentListScreen({
@@ -42,7 +43,7 @@ class ComponentListScreen extends ConsumerWidget {
         components.where((c) => c.name == 'Activity goal').first as FigmaContainerDefinition;
 
     String myWidgetClassString = ComponentWidgetBuilder.build(activityGoal);
-    File classfile = NameBuilder.createClassFileName(activityGoal.name);
+    File classfile = NameBuilder.createClassFile(activityGoal.name);
     classfile.writeAsStringSync(myWidgetClassString);
   }
 }
@@ -93,40 +94,5 @@ class $className extends StatelessWidget {
 
   static String _buildItemText(FigmaTextDefinition item) {
     return "const Text('${item.characters}')";
-  }
-}
-
-class NameBuilder {
-  static String createClassName(String name) {
-    return capitalCase(name.split(' '));
-  }
-
-  static File createClassFileName(String name) {
-    final fileName = snakeCase(name.split(' '));
-    return File('lib/generated/components/$fileName.dart');
-  }
-
-  static String capitalCase(List<String> words) {
-    final firstWord = capitalise(words.first);
-    final restOfWords = words.sublist(1).map((word) => capitalise(word)).toList();
-    return [firstWord, ...restOfWords].join();
-  }
-
-  static String camelCase(List<String> words) {
-    final firstWord = words.first.toLowerCase();
-    final restOfWords = words.sublist(1).map((word) => capitalise(word)).toList();
-    return [firstWord, ...restOfWords].join();
-  }
-
-  static String snakeCase(List<String> words) {
-    return words.map((word) => word.toLowerCase()).join('_');
-  }
-
-  static String capitalise(String string) {
-    return string.isEmpty
-        ? string
-        : string.length == 1
-            ? string.toUpperCase()
-            : '${string.substring(0, 1).toUpperCase()}${string.substring(1)}';
   }
 }

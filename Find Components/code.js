@@ -18,21 +18,12 @@ async function processMessage(msg) {
         console.log(components);
         figma.closePlugin();
     } else if (msg.type === 'post-data') {
-        const url = "http://localhost:8080/put";
-        const components = findComponents(figma.currentPage.selection);
-        fetch(url, {
-            method: 'PUT',
-            body: JSON.stringify(components)
-        })
-            .then(response => {
-                console.log('Response', response);
-                figma.closePlugin();
-            }) // .text(), etc.
-            .catch((e) => {
-                console.error('Error occurred while posting data', e);
-                figma.closePlugin();
-            });
-
+        const selectedNodes = figma.currentPage.selection;
+        const components = findComponents(selectedNodes);
+        console.log('====> Posting component data');
+        await postComponents(components);
+        console.log('====> Posting component previews');
+        await findComponentsAndCreatePreviews(selectedNodes);
     } else if (msg.type === 'export-slice') {
         const component = figma.currentPage.selection[0];
         const frame = await createComponentPreview(component);
@@ -41,15 +32,63 @@ async function processMessage(msg) {
     } else {
         figma.closePlugin();
     }
+
+    figma.closePlugin();
+}
+
+async function postComponents(components) {
+    const url = "http://localhost:8080/put";
+    const response = await fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify(components)
+    });
+    console.log('Response', response);
+}
+
+async function findComponentsAndCreatePreviews(nodes) {
+    for (let node of nodes) {
+        await _findComponentsAndCreatePreviews(node)
+    }
+}
+
+async function _findComponentsAndCreatePreviews(node, depth = 0) {
+    if (depth >= MAX_DEPTH) {
+        return;
+    }
+
+    const previewURL = "http://localhost:8080/preview";
+    console.log('NODE', node);
+    if (node.type == 'COMPONENT') {
+        console.log(`Found Component: ${node.name}`);
+        const preview = await componentToPreview(node);
+        console.log(preview);
+        const response = await fetch(previewURL, {
+            method: 'PUT',
+            body: JSON.stringify(preview)
+        });
+        console.log('Preview Response', response);
+    } else if (node.children) {
+        for (let child of node.children) {
+            await _findComponentsAndCreatePreviews(child, ++depth);
+        }
+    }
+}
+
+async function componentToPreview(component) {
+    const bytes = await component.exportAsync({
+        format: 'SVG'
+    });
+    return {
+        id: component.id,
+        name: component.name,
+        type: component.name.split('/')[0].trim(),
+        svg: String.fromCharCode.apply(null, bytes)
+    };
 }
 
 async function createComponentPreview(component) {
     try {
         console.log('AAAA');
-        const x = component.x;
-        const y = component.y;
-        const width = component.width;
-        const height = component.height;
 
         console.log('BBBB');
         const bytes = await component.exportAsync({
@@ -58,8 +97,12 @@ async function createComponentPreview(component) {
         console.log('CCCC');
         const imageAsString = String.fromCharCode.apply(null, bytes);
 
-
         console.log(imageAsString);
+
+        const x = component.x;
+        const y = component.y;
+        const width = component.width;
+        const height = component.height;
 
         // const image = figma.createImage(bytes);
         // console.log(image.hash);
