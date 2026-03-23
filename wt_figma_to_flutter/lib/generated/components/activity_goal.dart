@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class ActivityGoal extends StatelessWidget {
@@ -7,16 +9,29 @@ class ActivityGoal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const fileName = 'lib/generated/previews/tracker.png';
+    const textStyle = TextStyle(
+      color: Colors.white,
+    );
     return Column(
       children: [
-        Container(),
+        Image.file(File(fileName)),
         Column(
           children: [
-            const Text('Activity goal'),
+            const Text(
+              'Activity goal',
+              style: textStyle,
+            ),
             Column(
               children: const [
-                Text('mins'),
-                Text('25 / 45'),
+                Text(
+                  '25 / 45',
+                  style: textStyle,
+                ),
+                Text(
+                  'mins',
+                  style: textStyle,
+                ),
               ],
             ),
           ],

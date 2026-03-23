@@ -1,0 +1,13 @@
+@startuml
+digraph mindmap {
+  node [shape=box]
+  rankdir=TB
+  edge [dir=none]
+  "Section 1" -> "Sub 1a"
+  "Section 1" -> "Sub 1b"
+  "Section 2" -> "Sub 2a"
+  "Section 3" -> "Sub 3a"
+  "Section 3" -> "Sub 3b"
+  "Section 3" -> "Sub 3c"
+}
+@enduml

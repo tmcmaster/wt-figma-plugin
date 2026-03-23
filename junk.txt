@@ -1,0 +1,44 @@
+I will supply a definitions of a system I want to build.
+The definition will include a list of entities and a list of relationships.
+The entities will have a comment that describes the entity
+The entities will contain a list of attributes.
+The attributes will contain a name for the entity, which will need to be converted to camelcase.
+The attribute will also have a type specified for it.
+The definition to be converted is as follows:
+
+Entities:
+  - Job // Represents a job posting
+      - job title: String
+      - description: String
+      - requirements: String
+      - salary range: String
+  - Candidate: // Represents a person who has applied for a job
+      - name: String
+      - contact information: String
+      - work experience: String
+      - education: String
+      - skills: String
+  - Recruiter: // Represents a person responsible for recruiting candidates for job postings.
+      - name: String
+      - contact information: String
+      - job title: String
+  - Application: // Represents a candidate's application for a specific job posting.
+      - candidate resume:
+      - cover letter:
+
+Relationships:
+  - One job can have many applications.
+  - One candidate can apply for many jobs.
+  - One recruiter can manage many job postings.
+  - One job posting can be managed by many recruiters.
+
+
+Can you convert this definition into a plantuml class diagram
+
+An application goes through a number of stages to completion
+- Application is made
+- Recruiter gets notified.
+- Recruiter reviews the application
+- Recruiter contacts the candidate
+- the role is discussed
+- the candidate agrees to

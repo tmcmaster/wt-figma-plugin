@@ -18,6 +18,8 @@ dependencies:
   freezed: ^2.3.2
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
+  widgetbook: ^2.4.1
+  flutter_svg: ^1.1.6
 
   wt_logging:
     git:
@@ -27,6 +29,7 @@ dependencies:
       url: git@github.com:tmcmaster/wt_models.git
   built_value: ^8.4.3
   built_collection: ^5.1.1
+  pixel_perfect: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +41,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/

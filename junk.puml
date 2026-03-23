@@ -1,0 +1,38 @@
+@startuml
+skinparam class {
+
+    RoundCorner 100
+}
+
+class Candidate <<Person>> {
+  -id: int
+  -name: string
+  -email: string
+  -resume: string
+}
+
+class Recruiter <<Person>> {
+  -id: int
+  -name: string
+  -email: string
+  -phone: string
+}
+
+class Employer <<Person>> {
+  -id: int
+  -name: string
+  -email: string
+  -industry: string
+}
+
+class Role <<Cognito>> {
+  -id: int
+  -title: string
+  -description: string
+  -requirements: string
+}
+
+Candidate -- Role : applies for
+Recruiter -- Role : posts
+Employer -- Role : offers
+@enduml
